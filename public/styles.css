@@ -1,0 +1,279 @@
+:root {
+  color-scheme: light;
+  --page: #eef2f3;
+  --panel: #fbfcfc;
+  --panel-edge: #d7dee2;
+  --display: #111827;
+  --display-muted: #7c8793;
+  --key: #ffffff;
+  --key-hover: #f2f6f7;
+  --operator: #2563eb;
+  --operator-hover: #1d4ed8;
+  --utility: #e6edf0;
+  --utility-hover: #dbe5e9;
+  --equals: #0f766e;
+  --equals-hover: #0d665f;
+  --danger: #b91c1c;
+  --shadow: 0 22px 60px rgba(42, 56, 66, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.14), transparent 34rem),
+    linear-gradient(135deg, #eef2f3 0%, #f8faf9 52%, #e8f0ed 100%);
+  color: var(--display);
+}
+
+.app {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.hidden {
+  display: none;
+}
+
+.auth-panel,
+.calculator {
+  width: min(100%, 360px);
+  padding: 18px;
+  border: 1px solid var(--panel-edge);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.auth-panel h1 {
+  margin: 0 0 18px;
+  font-size: 1.65rem;
+  line-height: 1.15;
+}
+
+.login-form {
+  display: grid;
+  gap: 14px;
+}
+
+.login-form label {
+  display: grid;
+  gap: 7px;
+  color: #44515f;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.login-form input {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid var(--panel-edge);
+  border-radius: 6px;
+  padding: 0 12px;
+  color: var(--display);
+  font: inherit;
+  background: #ffffff;
+}
+
+.login-form input:focus {
+  outline: 3px solid rgba(37, 99, 235, 0.24);
+  border-color: #2563eb;
+}
+
+.login-error {
+  min-height: 20px;
+  margin: 0;
+  color: var(--danger);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.login-button,
+.logout-button {
+  border: 0;
+  border-radius: 6px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 140ms ease, transform 140ms ease;
+}
+
+.login-button {
+  min-height: 48px;
+  background: var(--operator);
+  color: #ffffff;
+}
+
+.login-button:hover {
+  background: var(--operator-hover);
+}
+
+.logout-button {
+  min-height: 36px;
+  padding: 0 12px;
+  background: var(--utility);
+  color: #111827;
+}
+
+.logout-button:hover {
+  background: var(--utility-hover);
+}
+
+.login-button:active,
+.logout-button:active {
+  transform: translateY(1px);
+}
+
+.user-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.user-name,
+.user-role {
+  display: block;
+}
+
+.user-name {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.user-role {
+  color: #647281;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.screen {
+  display: grid;
+  align-content: end;
+  min-height: 118px;
+  padding: 18px;
+  margin-bottom: 14px;
+  border-radius: 6px;
+  background: #16202a;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.expression {
+  min-height: 22px;
+  color: var(--display-muted);
+  font-size: 0.95rem;
+  text-align: right;
+  word-break: break-all;
+}
+
+.display {
+  width: 100%;
+  min-height: 52px;
+  font-size: clamp(2rem, 10vw, 3rem);
+  font-weight: 700;
+  line-height: 1.08;
+  text-align: right;
+  word-break: break-all;
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.key {
+  min-width: 0;
+  min-height: 62px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--key);
+  color: #111827;
+  font: inherit;
+  font-size: 1.3rem;
+  font-weight: 700;
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.08);
+  cursor: pointer;
+  transition: background 140ms ease, transform 140ms ease, box-shadow 140ms ease;
+}
+
+.key:hover {
+  background: var(--key-hover);
+}
+
+.key:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.13);
+}
+
+.key:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.32);
+  outline-offset: 2px;
+}
+
+.key:disabled {
+  background: #edf1f2;
+  color: #9aa5ad;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.operator {
+  background: var(--operator);
+  color: #ffffff;
+}
+
+.operator:hover {
+  background: var(--operator-hover);
+}
+
+.operator:disabled,
+.operator:disabled:hover {
+  background: #c7d0d6;
+  color: #6b7780;
+}
+
+.utility {
+  background: var(--utility);
+}
+
+.utility:hover {
+  background: var(--utility-hover);
+}
+
+.equals {
+  grid-row: span 2;
+  background: var(--equals);
+  color: #ffffff;
+}
+
+.equals:hover {
+  background: var(--equals-hover);
+}
+
+.zero {
+  grid-column: span 2;
+}
+
+@media (max-width: 380px) {
+  .app {
+    padding: 14px;
+  }
+
+  .calculator {
+    padding: 14px;
+  }
+
+  .key {
+    min-height: 56px;
+  }
+}
